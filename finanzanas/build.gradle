@@ -28,7 +28,7 @@ dependencies {
 	implementation 'org.hibernate.orm:hibernate-core:6.2.7.Final'
 
 
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 //	developmentOnly 'org.springframework.boot:spring-boot-devtools'
