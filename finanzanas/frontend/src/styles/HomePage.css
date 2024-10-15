@@ -1,0 +1,91 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Estilos de la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c1e4a;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: #ff6f61;
+}
+
+/* Estilos del Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #00d4b7;
+}
+
+.hero-content {
+    max-width: 50%;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+.social-icons a:hover {
+    color: #ff6f61;
+}
+
+.cta-button {
+    background-color: #ff6f61;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ff3b2e;
+}
+
+/* Estilos de la imagen en Hero */
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}

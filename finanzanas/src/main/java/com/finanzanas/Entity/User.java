@@ -3,6 +3,7 @@ package com.finanzanas.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Entity
@@ -22,6 +23,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String correo;
 
+    @Column(nullable = false)
+    private String password;
+
 
     // Constructores
     public User() {}
@@ -29,6 +33,7 @@ public class User {
     public User(String nombre, String correo) {
         this.nombre = nombre;
         this.correo = correo;
+        this.password = new BCryptPasswordEncoder().encode(password);  // Encriptar la contraseña
     }
 
 }
