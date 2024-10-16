@@ -46,23 +46,35 @@ public class SecurityConfig {
                 .cors(withDefaults())  // Habilitar CORS
                 .csrf(csrf -> csrf.disable())  // Desactiva CSRF para pruebas
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/registrar", "/api/auth/login", "/api/usuarios/*").permitAll()  // Rutas permitidas sin autenticación
+                        .requestMatchers("/api/auth/registrar", "/api/auth/login", "/api/usuarios/*", "/api/movimientos/crear").permitAll()  // Rutas permitidas sin autenticación
                         .anyRequest().authenticated()  // Protege el resto de las rutas
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
+
                 );
         return http.build();
     }
 
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(csrf -> csrf.disable())  // Desactiva CSRF
+//                .authorizeHttpRequests(auth -> auth
+//                        .anyRequest().permitAll()  // Permite todas las solicitudes sin autenticación
+//                );
+//        return http.build();
+//    }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000")); // Agrega la URL del frontend
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));  // Permitir solicitudes desde localhost:3000
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // Permitir métodos necesarios
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(true);  // Permitir envío de cookies y credenciales
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
