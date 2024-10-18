@@ -24,6 +24,15 @@ CREATE TABLE usuarios (
     INDEX correo_idx (correo)   -- Indice para la columna correo
 );
 
+/*CREATE TABLE `usuarios` (
+    `id_usuario` bigint NOT NULL AUTO_INCREMENT,
+    `nombre` varchar(255) NOT NULL,
+    `correo` varchar(255) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    PRIMARY KEY (`id_usuario`),
+    UNIQUE KEY `correo` (`correo`)
+);*/
+
 
 -- query para crear la tabla asociada a los movimientos financieros
 CREATE TABLE movimientos (
