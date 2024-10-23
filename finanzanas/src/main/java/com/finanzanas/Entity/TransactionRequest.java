@@ -21,7 +21,6 @@ public class TransactionRequest {
     *
     * Sigue usando una clase auxiliar (TransactionRequest con @RequestBody) para
     * mapear el JSON en tu controlador. Este es el enfoque correcto para manejar
-    * solicitudes POST que envían datos en formato JSON. Aquí te dejo un resumen
-    * del código recomendado:
+    * solicitudes POST que envían datos en formato JSON.
     * */
 }

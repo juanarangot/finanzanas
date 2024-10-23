@@ -23,7 +23,12 @@ function App() {
                 <Routes>
                     <Route path="/"  element={<HomePage/>} />
                     <Route path="/login" element={<LoginPage/>} />
-                        <Route path="/register" element={<Register />} />
+                    <Route path="/home" element={<Home/>} />
+                    <Route path="/register" element={<Register />} />
+
+                    {/*Ejemplo de ruta privada*/}
+                    {/*<PrivateRoute path="/dashboard" component={Dashboard} />*/}
+
                     {/*<Route path="/about" component={AboutPage} />*/}
                     {/*<Route path="/services" component={ServicesPage} />*/}
                     {/*<Route path="/contact" component={ContactPage} />*/}
