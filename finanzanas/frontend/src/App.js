@@ -7,6 +7,8 @@ import LoginForm from "./components/LoginForm";
 import Register from "./components/Register";
 import HomePage from "./components/Home2";
 import LoginPage from "./components/LoginPage";
+import Logout from "./components/Logout";
+import Navbar from "./components/NavBar";
 
 function App() {
     return (
@@ -20,11 +22,15 @@ function App() {
                 {/*    <Route path="/login" element={<LoginForm />} />*/}
                 {/*    <Route path="/register" element={<Register />} />*/}
                 {/*</Routes>*/}
+                <Navbar/>
                 <Routes>
                     <Route path="/"  element={<HomePage/>} />
                     <Route path="/login" element={<LoginPage/>} />
                     <Route path="/home" element={<Home/>} />
                     <Route path="/register" element={<Register />} />
+
+                    {/* Ruta de cierre de sesión */}
+                    <Route path="/logout" component={Logout} />
 
                     {/*Ejemplo de ruta privada*/}
                     {/*<PrivateRoute path="/dashboard" component={Dashboard} />*/}
