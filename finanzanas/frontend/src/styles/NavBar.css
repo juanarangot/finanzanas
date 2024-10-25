@@ -1,0 +1,60 @@
+/* NavBar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+}
+
+.navbar-menu a,
+.navbar-menu button {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.navbar-hamburger .menu-icon {
+    cursor: pointer;
+}
+
+.navbar-hamburger .menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar-hamburger:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}

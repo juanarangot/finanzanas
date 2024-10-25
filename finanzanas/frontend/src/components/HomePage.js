@@ -28,9 +28,6 @@ const HomePage = () => {
                     </div>
                     <button className="cta-button">Know More</button>
                 </div>
-                <div className="hero-image">
-                    <img src="/path-to-image.jpg" alt="Financial Planning" />
-                </div>
             </section>
         </div>
     );
