@@ -72,7 +72,7 @@ jwt.secret=tu_clave_secreta
 
 #### Ejecución del backend
 
-Navega al directorio `backend/` y ejecuta el siguiente comando para iniciar el servidor de Spring Boot:
+Navega al directorio `src/` y ejecuta el siguiente comando para iniciar el servidor de Spring Boot:
 
 ```bash
 mvn spring-boot:run
