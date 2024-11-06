@@ -60,17 +60,6 @@ public class UserController {
 
 
 
-
-
-//    @PostMapping("/{idUsuario}/presupuestos")
-//    public ResponseEntity<Budget> crearPresupuesto(@PathVariable Long idUsuario, @RequestBody Budget budget) {
-//        User user = userService.obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-//        budget.setUser(user);
-//        budgetService.guardarPresupuesto(budget);
-//        return ResponseEntity.ok(budget);
-//    }
-
-
     // Obtener todos los presupuestos de un usuario
     @GetMapping("/{userId}/presupuestos")
     public ResponseEntity<List<Budget>> obtenerPresupuestosPorUsuario(@PathVariable Long userId) {
@@ -104,5 +93,3 @@ public class UserController {
     }
 
 }
-
-
