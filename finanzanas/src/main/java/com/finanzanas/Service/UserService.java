@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,12 +31,12 @@ public class UserService implements UserDetailsService {
     @Qualifier("customPasswordEncoder")
     private PasswordEncoder passwordEncoder;
 
-    @Transactional
-    public User crearUsuario(User usuario) {
-//        !!! TODO: NO SE SI SE GENERE ALGUN ERROR
-        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        return userRepository.save(usuario);
-    }
+//    @Transactional
+//    public User crearUsuario(User usuario) {
+////        !!! TODO: NO SE SI SE GENERE ALGUN ERROR
+//        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+//        return userRepository.save(usuario);
+//    }
 
     @Transactional
     public User registrarUsuario(User usuario) {
@@ -70,4 +72,12 @@ public class UserService implements UserDetailsService {
     public void eliminarUsuario(Long id) {
         userRepository.deleteById(id);
     }
+
+
+    public void actualizarBalance(Long idUsuario, BigDecimal nuevoBalance) {
+        User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        user.setBalance(nuevoBalance);
+        registrarUsuario(user);
+    }
+
 }

@@ -74,7 +74,7 @@ public class SecurityConfig {
                 .cors(withDefaults())  // Habilitar CORS
                 .csrf(csrf -> csrf.disable()) // Desactivar CSRF
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/auth/registrar", "/api/auth/login", "/api/usuarios/*", "/api/movimientos/crear").permitAll()  // Rutas permitidas sin autenticación
+                        .requestMatchers("/api/auth/**", "/api/auth/registrar", "/api/auth/login", "/api/usuarios/**", "/api/movimientos/crear").permitAll()  // Rutas permitidas sin autenticación
                         .anyRequest().authenticated()  // Proteger todas las demás rutas
                 )
                 .sessionManagement(session -> session
