@@ -44,3 +44,19 @@ CREATE TABLE movimientos (
     fecha DATETIME,  -- Fecha del movimiento
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
+
+
+-- ESTOY HACIENDO CIERTOS CAMBIOS QUE DESPUES VOY A UNIFICAR Y EXPLICAR
+
+ALTER TABLE usuarios
+    ADD COLUMN balance DECIMAL(10, 2) DEFAULT 0.00,
+    ADD COLUMN objetivo_financiero VARCHAR(255);
+
+
+CREATE TABLE presupuestos (
+    id_presupuesto BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
+    id_usuario BIGINT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
