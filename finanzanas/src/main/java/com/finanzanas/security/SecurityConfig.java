@@ -72,6 +72,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(withDefaults())  // Habilitar CORS
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable()) // Desactivar CSRF
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**", "/api/auth/registrar", "/api/auth/login", "/api/usuarios/**", "/api/movimientos/crear").permitAll()  // Rutas permitidas sin autenticación
@@ -98,7 +99,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));  // Permitir solicitudes desde localhost:3000
+        configuration.setAllowedOrigins(List.of("http://localhost:3000", "https://localhost:3000", "localhost:3000"));  // Permitir solicitudes desde localhost:3000
+//        configuration.setAllowedOrigins(List.of("*"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // Permitir métodos necesarios
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);  // Permitir envío de cookies y credenciales
@@ -107,5 +109,17 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // Cambia esto por el origen adecuado
+//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
+
 
 }

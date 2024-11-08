@@ -6,6 +6,8 @@ function LogoutButton() {
     const handleLogout = () => {
         // Eliminar el token del localStorage
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('transactions');
 
         // Redirigir al usuario a la página de inicio de sesión
         window.alert("Sesión cerrada");

@@ -45,6 +45,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(usuario);
     }
 
+    // actualizar usuario
+    @Transactional
+    public User actualizarUsuario(User usuario) {
+        return userRepository.save(usuario);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         // Buscar el usuario por su email
@@ -69,6 +75,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findById(id);
     }
 
+    public Optional<User> obtenerUsuarioPorCorreo(String correo) {
+        return userRepository.findByCorreo(correo);
+    }
+
     public void eliminarUsuario(Long id) {
         userRepository.deleteById(id);
     }
@@ -77,7 +87,35 @@ public class UserService implements UserDetailsService {
     public void actualizarBalance(Long idUsuario, BigDecimal nuevoBalance) {
         User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         user.setBalance(nuevoBalance);
-        registrarUsuario(user);
+        actualizarUsuario(user);
+    }
+
+
+    // obtener el balance del usuario
+    public BigDecimal obtenerBalance(Long idUsuario) {
+        User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        return user.getBalance();
+    }
+
+    // modificar el balance del usuario
+    public void modificarBalance(Long idUsuario, BigDecimal nuevoBalance) {
+        User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        user.setBalance(nuevoBalance);
+
+        actualizarUsuario(user);
+    }
+
+    // obtener el objetivo financiero del usuario
+    public String obtenerObjetivoFinanciero(Long idUsuario) {
+        User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        return user.getObjetivoFinanciero();
+    }
+
+    // modificar el objetivo financiero del usuario
+    public void modificarObjetivoFinanciero(Long idUsuario, String nuevoObjetivo) {
+        User user = obtenerUsuarioPorId(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        user.setObjetivoFinanciero(nuevoObjetivo);
+        actualizarUsuario(user);
     }
 
 }
