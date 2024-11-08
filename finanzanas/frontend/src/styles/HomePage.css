@@ -1,91 +1,167 @@
-/* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-}
-
-/* Estilos de la barra de navegación */
+/* Navbar Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1c1e4a;
-    padding: 1rem 2rem;
+    padding: 15px 20px;
+    background-color: #333;
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 20px;
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
+/* Estilo para el enlace "Ingresa" como botón */
+.button-link {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-link:hover {
+    background-color: #45a049;
+    color: #f1f1f1;
+}
+
+/* Resto de estilos */
 .navbar ul li a:hover {
-    color: #ff6f61;
+    color: #4CAF50;
 }
 
-/* Estilos del Hero Section */
+/* Hero Section */
 .hero-section {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 2rem;
-    background-color: #00d4b7;
-}
-
-.hero-content {
-    max-width: 50%;
+    justify-content: center;
+    background: linear-gradient(to right, #4CAF50, #2196F3);
     color: white;
+    height: 100vh;
+    text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3em;
+    margin-bottom: 0.3em;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+.hero-subtitle {
+    font-size: 1.5em;
+    font-style: italic;
+    margin-bottom: 20px;
 }
 
-.social-icons a {
-    margin-right: 1rem;
-    text-decoration: none;
+.hero-description {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.social-link {
     color: white;
-}
-
-.social-icons a:hover {
-    color: #ff6f61;
-}
-
-.cta-button {
-    background-color: #ff6f61;
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
     border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Call to Action Button */
+.cta-button {
+    background-color: #FF9800;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #ff3b2e;
+    background-color: #e68a00;
 }
 
-/* Estilos de la imagen en Hero */
-.hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-icons {
+        flex-direction: column;
+
+    }
 }
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.social-link {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5em; /* Tamaño de los iconos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+

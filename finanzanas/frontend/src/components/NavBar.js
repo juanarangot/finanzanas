@@ -1,52 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/NavBar.css'; // Añade estilos CSS aquí
+import '../styles/NavBar.css';
 
 function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
 
-    // Verificar si el usuario tiene una sesión activa
     useEffect(() => {
         const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token); // Establecer el estado dependiendo de si el token existe
+        setIsLoggedIn(!!token);
     }, []);
 
-    // Función para manejar el cierre de sesión
     const handleLogout = () => {
-        localStorage.removeItem('token'); // Eliminar token de localStorage
-        setIsLoggedIn(false); // Actualizar estado
-        navigate('/login'); // Redirigir a la página de login
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        navigate('/login');
     };
 
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <Link to="/">FINANZANAS</Link>
+                <Link to="/dashboard" className="logo-text">FINANZANAS</Link>
             </div>
             <div className="navbar-menu">
-                <Link to="/help">Ayuda</Link>
-                {isLoggedIn && (
+                <Link to="/" className="navbar-btn">Home</Link>
+                <Link to="/help" className="navbar-btn">Ayuda</Link>
+                {isLoggedIn ? (
                     <>
-                        <Link to="/profile">Perfil</Link>
-                        <button className="logout-btn" onClick={handleLogout}>
+                        <Link to="/profile" className="navbar-btn">Perfil</Link>
+                        <button className="navbar-btn logout-btn" onClick={handleLogout}>
                             Cerrar sesión
                         </button>
                     </>
+                ) : (
+                    <>
+                        <Link to="/login" className="navbar-btn">Iniciar sesión</Link>
+                        <Link to="/register" className="navbar-btn">Registrarse</Link>
+                    </>
                 )}
-                {!isLoggedIn && <Link to="/login">Iniciar sesión</Link>}
             </div>
-            {/* Menú hamburguesa con opciones */}
-            <div className="navbar-hamburger">
+            <div className="navbar-hamburger" onClick={() => setShowDropdown(!showDropdown)}>
                 <div className="menu-icon">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-                <div className="dropdown-menu">
-                    <Link to="/settings">Configuraciones</Link>
-                    <Link to="/about">Acerca de</Link>
-                </div>
+                {showDropdown && (
+                    <div className="dropdown-menu">
+                        <Link to="/settings" className="dropdown-item">Configuraciones</Link>
+                        <Link to="/about" className="dropdown-item">Acerca de</Link>
+                        {isLoggedIn && (
+                            <button className="dropdown-item logout-btn" onClick={handleLogout}>
+                                Cerrar sesión
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
         </nav>
     );

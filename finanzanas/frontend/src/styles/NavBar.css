@@ -1,60 +1,99 @@
-/* NavBar.css */
+/* Estilos básicos */
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
+    padding: 10px 20px;
     background-color: #333;
     color: white;
 }
 
-.navbar-logo {
-    font-size: 1.5rem;
-}
-
-.navbar-menu a,
-.navbar-menu button {
-    margin-right: 15px;
-    color: white;
+.navbar-logo .logo-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
     text-decoration: none;
 }
 
-.navbar-menu button {
-    background: none;
+.navbar-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
     border: none;
     cursor: pointer;
-    color: white;
+    transition: background-color 0.3s;
 }
 
-.navbar-hamburger .menu-icon {
+.navbar-btn:hover {
+    background-color: #45a049;
+}
+
+.logout-btn {
+    background-color: #F44336;
+}
+
+.logout-btn:hover {
+    background-color: #e53935;
+}
+
+/* Menú hamburguesa */
+.navbar-hamburger {
+    display: none;
+    flex-direction: column;
     cursor: pointer;
+    gap: 5px;
 }
 
-.navbar-hamburger .menu-icon span {
+.menu-icon span {
     display: block;
     width: 25px;
     height: 3px;
     background-color: white;
-    margin: 5px 0;
+    transition: all 0.3s;
 }
 
+/* Estilo del menú desplegable */
 .dropdown-menu {
-    display: none;
     position: absolute;
-    top: 50px;
-    right: 10px;
-    background-color: #333;
+    top: 60px;
+    right: 20px;
+    background-color: #444;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     padding: 10px;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
 }
 
-.navbar-hamburger:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 10px;
+.dropdown-item {
+    padding: 8px 15px;
     color: white;
     text-decoration: none;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #4CAF50;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        display: flex;
+    }
 }

@@ -10,6 +10,8 @@ import LoginPage from "./components/LoginPage";
 import Logout from "./components/Logout";
 import Navbar from "./components/NavBar";
 import NotFound from "./components/NotFound";
+import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
 
 function App() {
     // Hook para obtener la ubicación actual
@@ -36,6 +38,8 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     {/* Ruta de cierre de sesión */}
                     <Route path="/logout" component={Logout} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
 
 
                     {/* Ruta explícita para la página 404 */}
